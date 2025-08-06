@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import userImg from "./../../assets/images/pexels-photo-2379004 1.png";
 
 export const SideBar = () => {
+
+const Name= localStorage.getItem("userEmail")
+
+
   return (
     <Sidebar className="h-screen w-[250px] fixed left-0 top-0 shadow-lg bg-white">
       <h4 className="text-gray-800 pt-2 pb-5">
@@ -21,14 +25,14 @@ export const SideBar = () => {
           alt="logo"
           className="w-24 h-24 rounded-full object-cover"
         />
-        <h6 className="p-2">Karthi Madesh</h6>
-        <p className="text-yellow-500">Admin</p>
+        {/* <h6 className="p-2">{Name}</h6> */}
+        <p className="text-yellow-500 pt-3">{Name}</p>
       </div>
-      <Menu className="flex flex-col justify-center h-auto items-center mt-6">
+      <Menu className="flex flex-col justify-center h-auto items-center mt-6" style={{ lineHeight: '2' }}>
         <MenuItem
           icon={<IoHomeOutline className="text-lg" />}
           component={<Link to="/dashboard/home" />}
-          className="hover:bg-gray-100 w-full  px-4 rounded"
+          className="hover:bg-gray-100 w-full  px-4 rounded "
         >
           Home
         </MenuItem>

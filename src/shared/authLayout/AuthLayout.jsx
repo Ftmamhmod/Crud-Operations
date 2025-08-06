@@ -1,5 +1,9 @@
+import LoginPage from "../../pages/Login/Login";
+
 const AuthLayout = () => {
-  return <div>AuthLayout</div>;
+  return <div>
+    <LoginPage></LoginPage>
+  </div>;
 };
 
 export default AuthLayout;
