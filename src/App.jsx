@@ -8,7 +8,7 @@ import { Home } from "lucide-react";
 import MasterLayout from "./shared/masterLayout/MasterLayout";
 import Login from "./pages/Login/Login";
 import Students from "./pages/Students/Students";
-import AddStudent from "./pages/AddStudent/AddStudent";
+import AddStudentForm from "./pages/AddStudentForm/AddStudentForm";
 
 function App() {
   const routes = createBrowserRouter([
@@ -41,12 +41,15 @@ function App() {
           path: "students",
           element: <Students />,
         },
-
-
-        {
+ {
           path: "user-form",
-          element: <AddStudent />,
-        },
+          element: <AddStudentForm />,
+        }
+
+
+
+
+
 
       ],
     },
