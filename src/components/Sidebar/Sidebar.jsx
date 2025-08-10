@@ -4,16 +4,13 @@ import { PiGraduationCap } from "react-icons/pi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import userImg from "./../../assets/images/pexels-photo-2379004 1.png";
+import { userImg } from "./../../assets/index.js";
 
 export const SideBar = () => {
-
-const Name= localStorage.getItem("userEmail")
-
-
+  const Name = localStorage.getItem("userEmail");
   return (
-    <Sidebar className="h-screen w-[250px] fixed left-0 top-0 shadow-lg bg-white">
-      <h4 className="text-gray-800 pt-2 pb-5">
+    <Sidebar className="min-h-screen h-full w-[250px] fixed left-0 top-0 shadow-lg bg-white">
+      <h4 className="text-gray-800 py-5 my-6">
         <span className="text-yellow-500 p-2">
           <b>|</b>
         </span>
@@ -28,7 +25,10 @@ const Name= localStorage.getItem("userEmail")
         {/* <h6 className="p-2">{Name}</h6> */}
         <p className="text-yellow-500 pt-3">{Name}</p>
       </div>
-      <Menu className="flex flex-col justify-center h-auto items-center mt-6" style={{ lineHeight: '2' }}>
+      <Menu
+        className="flex flex-col justify-center h-auto items-center mt-6"
+        style={{ lineHeight: "2" }}
+      >
         <MenuItem
           icon={<IoHomeOutline className="text-lg" />}
           component={<Link to="/dashboard/home" />}
