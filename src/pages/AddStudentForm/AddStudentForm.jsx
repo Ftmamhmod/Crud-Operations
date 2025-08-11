@@ -1,103 +1,101 @@
-import React, { useState } from "react";
+
+import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useStudents } from "../../context/StudentsContext";
+import { useNavigate } from "react-router-dom";
+
 export default function AddStudentForm() {
-  const [startDate, setStartDate] = useState(null);
+  const { register, handleSubmit, control, reset } = useForm();
+  const { addStudent } = useStudents();
+
+  const onSubmit = (data) => {
+    addStudent(data);
+    reset();
+  };
+  const navigate = useNavigate();
+
 
   return (
-    <>
-      {/* git checkout studentForm */}
-        <div className=" h-auto sm:h-15 w-11/12 m-auto  sm:items-center justify-between pt-2">
+    <div className="h-auto m-auto pt-2 p-5  mt-5 font-bold">
+      <h2 className="text-[22px] font-bold mb-6">Add  Student</h2>
 
-                <h2 className="sm:text-[22px] font-[700]  mb-6  h-1">Add new Students </h2>
-
-      <div className=" w-8/12 m-auto bg-gray-100 p-6">
-
-        <form>
-          <div class=" mb-3 ">
-            <div>
-              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Name
-              </label>
-              <input
-                type="text"
-                placeholder="Name"
-                id="first_name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Email
-            </label>
+      <div className="w-8/12 m-auto bg-gray-100 p-6 rounded-lg shadow">
+    <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-3">
+            <label className="block mb-2 text-sm font-medium">Name</label>
             <input
-              type="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="name@gmail.com"
-              required
+              type="text"
+              placeholder="Name"
+              {...register("name", { required: true })}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
           </div>
-          <div class=" mb-3 ">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              phone
-            </label>
-            <input
-              type="tel"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="01117078066"
-      pattern="^01[0-2,5][0-9]{8}$"
-              required
-            />
-          </div>
-
-<div className=" mb-3">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Date of admission
-            </label>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              dateFormat="yyyy-MM-dd"
- className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-blue-500 focus:border-blue-500 block  p-2.5
-                   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                   dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full"
-                placeholderText="Pick a date"
-            />
-          </div>
-
-          {/* Show Selected Date
-      {startDate && (
-        <p className="text-green-600">
-          You selected: <strong>{startDate.toDateString()}</strong>
-        </p>
-      )} */}
 
           <div className="mb-3">
-            <label
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              for="file_input"
-            >
-                         ADD Photo
-
-            </label>
+            <label className="block mb-2 text-sm font-medium">Email</label>
             <input
-              type="file"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              type="email"
+              placeholder="name@gmail.com"
+              {...register("email", { required: true })}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
           </div>
+
+          <div className="mb-3">
+            <label className="block mb-2 text-sm font-medium">Phone</label>
+            <input
+              type="tel"
+              placeholder="01117078066"
+              {...register("phone", {
+                required: true,
+                pattern: /^01[0-2,5]{1}[0-9]{8}$/,
+              })}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="block mb-2 text-sm font-medium">Date of admission</label>
+            <Controller
+              name="date"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <DatePicker
+                  selected={field.value}
+                  onChange={(date) => field.onChange(date)}
+                  dateFormat="yyyy-MM-dd"
+                  placeholderText="Pick a date"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                             focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+              )}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="block mb-2 text-sm font-medium">Add Photo</label>
+            <input
+              type="file"
+              {...register("file", { required: true })}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                         focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+          </div>
+
           <button
             type="submit"
-     className="bg-[#FEAF00] h-10 sm:h-full   rounded-xl text-white text-sm sm:text-base w-full p-3">
-
-            Add User
+            onClick={() => navigate("/dashboard/Students")}
+            className="bg-yellow-300 hover:bg-yellow-500 text-black font-medium py-6 px-1 rounded-lg w-full"
+          >
+          Insert
           </button>
         </form>
       </div>
-      </div>
-    </>
+    </div>
   );
 }
