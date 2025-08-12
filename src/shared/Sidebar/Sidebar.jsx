@@ -4,56 +4,61 @@ import { PiGraduationCap } from "react-icons/pi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import { userImg } from "./../../assets/index.js";
+import { userImg } from "../../assets/index.js";
+import { useState } from "react";
+import StudentsList from "../../pages/Students/Students.jsx";
 
 export const SideBar = () => {
   const Name = localStorage.getItem("userEmail");
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const handleToggle = () => {
+    setIsCollapsed(!isCollapsed);
+  };
   return (
-    <Sidebar className="min-h-screen h-full w-[250px] fixed left-0 top-0 shadow-lg bg-white">
-      <h4 className="text-gray-800 py-5 my-6">
-        <span className="text-yellow-500 p-2">
-          <b>|</b>
-        </span>
-        <b> CRUD OPERATIONS</b>
-      </h4>
+    <Sidebar className="sidebarContainer" collapsed={isCollapsed}>
+      {!isCollapsed ? (
+        <h4 className="text-gray-800 py-5 my-6">
+          <span className="text-yellow-500 p-2">
+            <b>|</b>
+          </span>
+          <b>Panel</b>
+        </h4>
+      ) : (
+        <h4 className="text-gray-800 py-5 my-6 px-2">Panel</h4>
+      )}
+
       <div className="flex flex-col items-center">
         <img
+          onClick={handleToggle}
           src={userImg}
           alt="logo"
-          className="w-24 h-24 rounded-full object-cover"
+          className="w-24 h-24 rounded-full object-cover mb-4"
         />
         {/* <h6 className="p-2">{Name}</h6> */}
         <p className="text-yellow-500 pt-3">{Name}</p>
       </div>
-      <Menu
-        className="flex flex-col justify-center h-auto items-center mt-6"
-        style={{ lineHeight: "2" }}
-      >
+      <Menu style={{ lineHeight: "2", marginTop: "1rem" }}>
         <MenuItem
           icon={<IoHomeOutline className="text-lg" />}
           component={<Link to="/dashboard/home" />}
-          className="hover:bg-gray-100 w-full  px-4 rounded "
         >
           Home
         </MenuItem>
         <MenuItem
           icon={<IoBookmarkOutline className="text-lg" />}
           component={<Link to="/dashboard/Students" />}
-          className="hover:bg-gray-100 w-full  px-4 rounded"
         >
           Students
         </MenuItem>
         <MenuItem
           icon={<PiGraduationCap className="text-lg" />}
           component={<Link to="/dashboard/user-form" />}
-          className="hover:bg-gray-100 w-full  px-4 rounded"
         >
           Add User
         </MenuItem>
         <MenuItem
           icon={<AiOutlineProfile className="text-lg" />}
           component={<Link to="/dashboard/profile" />}
-          className="hover:bg-gray-100 w-full  px-4 rounded"
         >
           Profile
         </MenuItem>
@@ -61,7 +66,6 @@ export const SideBar = () => {
         <MenuItem
           icon={<RiLogoutBoxRLine className="text-lg" />}
           component={<Link to="/login" />}
-          className="hover:bg-gray-100 w-full  px-4 rounded"
         >
           Logout
         </MenuItem>

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { SideBar } from "../../components/Sidebar/Sidebar";
+import { SideBar } from "../../shared/Sidebar/Sidebar";
 import { NavBar } from "../navBar/Navbar";
 
 const MasterLayout = () => {

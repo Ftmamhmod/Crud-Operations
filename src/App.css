@@ -1,0 +1,31 @@
+:root {
+  --primary-color: #f8d442;
+  --secondary-color: #feaf00;
+  --tertiary-color: #f8d442;
+  --text-color: #000000;
+  --text-color-light: #ffffff;
+  --text-color-dark: #000000;
+  --font-family: "Poppins", sans-serif;
+}
+.bg-login {
+  background: linear-gradient(
+    -90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+.btn-login {
+  background-color: #feaf00;
+}
+.btn-login:hover {
+  background-color: var(--tertiary-color);
+}
+.sidebarContainer {
+  background-color: #f2eae1;
+  height: 110vh;
+}
+
+.form-floating > .form-control:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
