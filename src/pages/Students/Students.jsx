@@ -121,7 +121,7 @@ export default function StudentsList({ handleAddStudent }) {
                       <button className="mr-5">
                         <GoPencil />
                       </button>
-                      <button>
+                      <button onClick={() => deleteStudent(student.id)}>
                         <MdOutlineDelete />
                       </button>
                     </div>
@@ -172,7 +172,6 @@ export default function StudentsList({ handleAddStudent }) {
         </div>
       </div>
       <h2 className="mt-5 p-5 font-bold">Students List</h2>
-
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>

@@ -10,8 +10,7 @@ import StudentsPage from "./pages/StudentsPage/StudentsPage";
 import AddStudentForm from "./pages/AddStudentForm/AddStudentForm";
 import { StudentsProvider } from "./context/StudentsContext";
 import Home from "./pages/Home/Home";
-
-
+import { Users } from "./pages/Users/Users";
 
 function App() {
   const routes = createBrowserRouter([
@@ -42,28 +41,24 @@ function App() {
 
         {
           path: "students",
-          element: <StudentsPage/>
+          element: <StudentsPage />,
         },
- {
+        {
           path: "user-form",
           element: <AddStudentForm />,
-        }
-
-
-
-
-
-
+        },
+        {
+          path: "users",
+          element: <Users />,
+        },
       ],
     },
   ]);
   return (
     <>
-
-
       <StudentsProvider>
-      <RouterProvider router={routes} />
-    </StudentsProvider>
+        <RouterProvider router={routes} />
+      </StudentsProvider>
     </>
   );
 }
