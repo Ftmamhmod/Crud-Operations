@@ -4,13 +4,14 @@ import "./App.css";
 import AuthLayout from "./shared/authLayout/AuthLayout";
 import NotFound from "./shared/notFound/NotFound";
 import ResetPass from "./pages/ResetPass/ResetPass";
-import { Home } from "lucide-react";
 import MasterLayout from "./shared/masterLayout/MasterLayout";
 import Login from "./pages/Login/Login";
 import StudentsPage from "./pages/StudentsPage/StudentsPage";
 import AddStudentForm from "./pages/AddStudentForm/AddStudentForm";
 import { StudentsProvider } from "./context/StudentsContext";
-;
+import Home from "./pages/Home/Home";
+
+
 
 function App() {
   const routes = createBrowserRouter([
