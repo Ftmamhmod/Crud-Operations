@@ -9,7 +9,6 @@ import { useState } from "react";
 import StudentsList from "../../pages/Students/Students.jsx";
 
 export const SideBar = () => {
-  const Name = localStorage.getItem("userEmail");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const handleToggle = () => {
     setIsCollapsed(!isCollapsed);
@@ -34,7 +33,7 @@ export const SideBar = () => {
           alt="logo"
           className="w-24 h-24 rounded-full object-cover mb-4"
         />
-        <p className="text-yellow-500 pt-3">{Name}</p>
+        <p className="text-yellow-500 pt-3">ADMIN</p>
       </div>
       <Menu style={{ lineHeight: "2", marginTop: "1rem" }}>
         <MenuItem
@@ -57,9 +56,9 @@ export const SideBar = () => {
         </MenuItem>
         <MenuItem
           icon={<AiOutlineProfile className="text-lg" />}
-          component={<Link to="/dashboard/profile" />}
+          component={<Link to="/dashboard/users" />}
         >
-          Profile
+          Users
         </MenuItem>
         <hr className="w-full my-2 border-gray-200" />
         <MenuItem
