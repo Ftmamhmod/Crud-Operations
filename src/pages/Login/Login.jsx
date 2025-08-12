@@ -7,6 +7,7 @@ import { FaArrowRightArrowLeft } from "react-icons/fa6"; // أو أي سهم ي�
 import "./Login.css";
 import bebo from "../../assets/images/istockphoto-1420737263-640_adpp_is.mp4";
 import TicTacToe from "./TicTacToe";
+import { toast } from "react-toastify";
 
 const ACCOUNT = {
   email: "admin@gmail.com",
@@ -36,8 +37,10 @@ export default function Login() {
         localStorage.setItem("userToken", "fake-token-123");
         localStorage.setItem("userEmail", email);
         navigate("/dashboard/home");
+        toast.success("Login successful!");
       } else {
         setErrorMsg("Invalid email or password");
+        toast.error("Login failed!");
       }
       setIsLoading(false);
     }, 1000);
