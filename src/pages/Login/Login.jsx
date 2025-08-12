@@ -15,7 +15,7 @@ export default function Login() {
     e.preventDefault();
     if (email === validEmail && password === validPassword) {
       localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("userEmail", email); // لو حابب تخزن الإيميل
+      localStorage.setItem("userEmail", email); 
       toast.success("Login successful! 🎉");
       navigate("/dashboard/home", { replace: true });
     } else {
