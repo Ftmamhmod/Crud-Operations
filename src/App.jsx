@@ -6,8 +6,12 @@ import NotFound from "./shared/notFound/NotFound";
 import ResetPass from "./pages/ResetPass/ResetPass";
 import MasterLayout from "./shared/masterLayout/MasterLayout";
 import Login from "./pages/Login/Login";
+import StudentsPage from "./pages/StudentsPage/StudentsPage";
+import AddStudentForm from "./pages/AddStudentForm/AddStudentForm";
+import { StudentsProvider } from "./context/StudentsContext";
 import Home from "./pages/Home/Home";
-import Students from "./pages/Students/Students";
+
+
 
 function App() {
   const routes = createBrowserRouter([
@@ -35,16 +39,31 @@ function App() {
           path: "home",
           element: <Home />,
         },
+
         {
           path: "students",
-          element: <Students />,
+          element: <StudentsPage/>
         },
+ {
+          path: "user-form",
+          element: <AddStudentForm />,
+        }
+
+
+
+
+
+
       ],
     },
   ]);
   return (
     <>
+
+
+      <StudentsProvider>
       <RouterProvider router={routes} />
+    </StudentsProvider>
     </>
   );
 }
