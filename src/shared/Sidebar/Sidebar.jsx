@@ -34,7 +34,6 @@ export const SideBar = () => {
           alt="logo"
           className="w-24 h-24 rounded-full object-cover mb-4"
         />
-        {/* <h6 className="p-2">{Name}</h6> */}
         <p className="text-yellow-500 pt-3">{Name}</p>
       </div>
       <Menu style={{ lineHeight: "2", marginTop: "1rem" }}>
