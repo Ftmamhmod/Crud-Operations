@@ -1,5 +1,5 @@
 import { useState } from "react";
-import userImg from "./../../assets/images/pexels-photo-2379004 1.png";
+import userImg from "./../../assets/images/user-img.png";
 import StudentsList from "../Students/Students";
 
 export default function StudentsPage() {
@@ -30,7 +30,7 @@ export default function StudentsPage() {
 
   return (
     <div>
-      <StudentsList data={students} />
+      <StudentsList data={students} handleAddStudent={handleAddStudent} />
     </div>
   );
 }

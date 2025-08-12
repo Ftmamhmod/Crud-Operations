@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaLock, FaAt } from 'react-icons/fa';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaLock, FaAt } from "react-icons/fa";
 import ClipLoader from "react-spinners/ClipLoader";
 import { FaArrowRightArrowLeft } from "react-icons/fa6"; // أو أي سهم يعجبك
 
-import './Login.css';
-import bebo from '../../assets/images/istockphoto-1420737263-640_adpp_is.mp4';
-import TicTacToe from './TicTacToe';
+import "./Login.css";
+import bebo from "../../assets/images/istockphoto-1420737263-640_adpp_is.mp4";
+import TicTacToe from "./TicTacToe";
 
 const ACCOUNT = {
   email: "admin@gmail.com",
-  password: "123456"
+  password: "123456",
 };
 
-
-
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
@@ -37,7 +35,7 @@ export default function Login() {
       ) {
         localStorage.setItem("userToken", "fake-token-123");
         localStorage.setItem("userEmail", email);
-        navigate("/dashboard");
+        navigate("/dashboard/home");
       } else {
         setErrorMsg("Invalid email or password");
       }
@@ -48,7 +46,13 @@ export default function Login() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* فيديو الخلفية */}
-      <video autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+      >
         <source src={bebo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -63,20 +67,35 @@ export default function Login() {
             <div className="row full-height justify-content-center">
               <div className="col-12 text-center align-self-center py-5">
                 <div className="section pb-5 pt-5 pt-sm-2 text-center">
-                  <h6 className="mb-0 pb-3 " style={{color: '#FFEBA7'}}>
+                  <h6 className="mb-0 pb-3 " style={{ color: "#FFEBA7" }}>
                     <span>Log In </span>
-                    <span >Look 👀</span>
+                    <span>Look 👀</span>
                   </h6>
-                  <input className="checkbox" type="checkbox" id="reg-log" checked={isChecked} onChange={handleToggle} />
+                  <input
+                    className="checkbox"
+                    type="checkbox"
+                    id="reg-log"
+                    checked={isChecked}
+                    onChange={handleToggle}
+                  />
                   <label htmlFor="reg-log"></label>
                   <div className="card-3d-wrap mx-auto">
                     <div className="card-3d-wrapper">
                       <div className="card-front">
                         <div className="center-wrap">
                           <div className="section text-center">
-                            <h4 className="mb-4 pb-3 tw" style={{color: '#FFEBA7'}} >Log In</h4>
+                            <h4
+                              className="mb-4 pb-3 tw"
+                              style={{ color: "#FFEBA7" }}
+                            >
+                              Log In
+                            </h4>
 
-                            {errorMsg && <div className="p-2 mb-4 text-sm text-red-800 bg-red-50">{errorMsg}</div>}
+                            {errorMsg && (
+                              <div className="p-2 mb-4 text-sm text-red-800 bg-red-50">
+                                {errorMsg}
+                              </div>
+                            )}
 
                             <form onSubmit={handleLogin}>
                               <div className="form-group">
@@ -106,24 +125,31 @@ export default function Login() {
                               </div>
 
                               <button type="submit" className="btn mt-4">
-                                {isLoading ? <ClipLoader size={20} color="white" /> : "Login"}
+                                {isLoading ? (
+                                  <ClipLoader size={20} color="white" />
+                                ) : (
+                                  "Login"
+                                )}
                               </button>
                             </form>
 
-                            <p className="mb-0 mt-4 text-center"><a href="#" className="link">Forgot your password?</a></p>
+                            <p className="mb-0 mt-4 text-center">
+                              <a href="#" className="link">
+                                Forgot your password?
+                              </a>
+                            </p>
                           </div>
                         </div>
                       </div>
                       {/* وجهة Sign Up ممكن تضاف لاحقًا */}
 
                       <div className="card-back">
-  <div className="center-wrap">
-    <div className="section text-center">
-      
-      <TicTacToe />
-    </div>
-  </div>
-</div>
+                        <div className="center-wrap">
+                          <div className="section text-center">
+                            <TicTacToe />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
