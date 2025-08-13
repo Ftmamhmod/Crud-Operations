@@ -13,6 +13,12 @@ export const SideBar = () => {
   const handleToggle = () => {
     setIsCollapsed(!isCollapsed);
   };
+  const handleLogout = () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      localStorage.removeItem("isLoggedIn");
+    }
+  };
   return (
     <Sidebar className="sidebarContainer" collapsed={isCollapsed}>
       {!isCollapsed ? (
@@ -62,6 +68,7 @@ export const SideBar = () => {
         </MenuItem>
         <hr className="w-full my-2 border-gray-200" />
         <MenuItem
+          onClick={handleLogout}
           icon={<RiLogoutBoxRLine className="text-lg" />}
           component={<Link to="/login" />}
         >
