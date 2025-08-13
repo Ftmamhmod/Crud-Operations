@@ -97,12 +97,6 @@ export const Users = () => {
     <div className="bg-gray-100 p-6 min-h-screen">
       <div className="flex justify-between items-center p-4 bg-white rounded-lg shadow mb-6">
         <h3 className="text-2xl font-semibold text-gray-800">Users List</h3>
-        <Link
-          to="/dashboard/user-form"
-          className="bg-yellow-600 hover:bg-yellow-700 text-white p-5 rounded-md transition duration-200 "
-        >
-          ADD NEW USER
-        </Link>
       </div>
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -180,9 +174,6 @@ export const Users = () => {
                     {user.birthDate}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button className="text-yellow-500 hover:text-yellow-700 mr-4">
-                      <MdOutlineModeEdit size={20} />
-                    </button>
                     <button
                       className="text-red-500 hover:text-red-700"
                       onClick={() => openModal(user)}
