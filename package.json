@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+<<<<<<< HEAD
     "preview": "vite preview"
+=======
+    "preview": "vite preview",
+    "preinstall": "npm install -g @rollup/rollup-linux-x64-gnu"
+>>>>>>> 1f8a00aa15f543f12de7e413648dccd793c67587
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
