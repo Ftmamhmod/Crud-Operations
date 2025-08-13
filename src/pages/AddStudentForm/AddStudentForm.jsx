@@ -141,7 +141,7 @@ export default function AddStudentForm() {
           <button
             type="submit"
             onClick={handleSubmit(onSubmit)}
-            className="bg-yellow-300 hover:bg-yellow-500 text-black font-medium py-6 px-1 rounded-lg w-full"
+            className="bg-yellow-300 hover:bg-yellow-500 text-black font-medium py-6 px-1 rounded-lg w-full cursor-pointer"
           >
             Insert
           </button>

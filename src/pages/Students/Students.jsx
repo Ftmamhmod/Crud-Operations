@@ -22,7 +22,7 @@ export default function StudentsList() {
 
         <div className="mt-5 m-auto w-11/12 h-0.5 bg-[#d8d7d7]"></div>
 
-        <div className="hidden sm:block mt-4 overflow-x-auto  ">
+        <div className="hidden lg:block mt-4 overflow-x-auto  ">
           <table className="min-w-[900px] w-11/12 m-auto border-separate border-spacing-y-4">
             <thead className="text-[12px] text-[#ACACAC]">
               <tr>
@@ -78,7 +78,7 @@ export default function StudentsList() {
           </table>
         </div>
 
-        <div className="sm:hidden mt-4 space-y-4 w-11/12 m-auto flex flex-wrap">
+        <div className="lg:hidden mt-4 space-y-4 w-11/12 m-auto flex flex-wrap">
           {students.map((student) => (
             <div key={student.id} className="bg-white rounded-2xl p-4 shadow ">
               <div className="flex items-center space-x-4">

@@ -101,7 +101,7 @@ export const Users = () => {
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className=" hidden lg:block min-w-[900] w-11/12 divide-y m-auto divide-gray-200 ">
             <thead className="bg-gray-50">
               <tr>
                 <th
@@ -175,7 +175,7 @@ export const Users = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button
-                      className="text-red-500 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 cursor-pointer"
                       onClick={() => openModal(user)}
                     >
                       <AiOutlineDelete size={20} />
@@ -185,14 +185,60 @@ export const Users = () => {
               ))}
             </tbody>
           </table>
-          <div className="flex justify-center gap-4 p-4">
+
+
+         <div className="lg:hidden mt-4 space-y-4 w-11/12 m-auto flex flex-wrap">
+          {currentUsers.map((user, index) => (
+            <div key={user.id} className="bg-white rounded-2xl p-4 shadow ">
+              <div className="flex items-center space-x-4">
+                <img
+                  src={user.image}
+                  alt={user.image}
+                  className="rounded-xl w-12 h-12"
+                />
+                <div className="wrap-anywhere">
+                  <h2 className="font-bold text-lg">{index + 1}</h2>
+                  <h2 className="font-bold text-lg">{user.firstName} {user.lastName}</h2>
+                  <p className="text-sm text-gray-500">{user.email}</p>
+                </div>
+              </div>
+              <div className="mt-3 text-sm text-gray-600">
+                <p>
+                  <span className="font-semibold">Phone:</span> {user.phone}
+                </p>
+                <p>
+                  <span className="font-semibold">Birth Date :</span>{" "}
+                  {user.birthDate}
+                </p>
+              </div>
+              <div className="flex justify-end mt-3 text-[#FEAF00] text-lg">
+                    <button
+                      className="text-red-500 hover:text-red-700 cursor-pointer"
+                      onClick={() => openModal(user)}
+                    >
+                      <AiOutlineDelete size={20} />
+                    </button>
+              </div>
+            </div>
+          ))}
+         </div>
+
+
+
+
+
+
+
+          
+          <div className=" flex justify-center gap-4 p-4">
             <button
               onClick={goToPreviousPage}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded ${
+              className={` hidden lg:flex px-4 py-2 rounded  ${
                 currentPage === 1
                   ? "bg-gray-300 cursor-not-allowed"
-                  : "bg-yellow-600 text-white hover:bg-yellow-700"
+                  : "bg-yellow-600 text-white hover:bg-yellow-700 cursor-pointer"
+                  
               }`}
             >
               Previous
@@ -201,17 +247,18 @@ export const Users = () => {
             <button
               onClick={goToNextPage}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded ${
+              className={`hidden lg:flex px-4 py-2 rounded ${
                 currentPage === totalPages
                   ? "bg-gray-300 cursor-not-allowed"
-                  : "bg-yellow-600 text-white hover:bg-yellow-700"
+                  : "bg-yellow-600 text-white hover:bg-yellow-700 cursor-pointer"
               }`}
             >
               Next
             </button>
           </div>
         </div>
-      </div>
+      </div
+      >
 
       {/* Modal */}
       {showModal && (
