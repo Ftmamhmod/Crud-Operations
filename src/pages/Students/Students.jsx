@@ -1,9 +1,12 @@
 import { useStudents } from "../../context/StudentsContext";
 import { GoPencil } from "react-icons/go";
 import { MdOutlineDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 
 export default function StudentsList({ handleAddStudent }) {
+    const navigate = useNavigate();
+
   const { students, deleteStudent } = useStudents();
   return (
     <div>
@@ -11,7 +14,7 @@ export default function StudentsList({ handleAddStudent }) {
         <div className="flex flex-col sm:flex-row h-auto sm:h-15 w-11/12 m-auto  sm:items-center justify-between pt-2">
           <h1 className="sm:text-[22px] font-[700] mb-3">Students List</h1>
           <button
-            onClick={handleAddStudent}
+           onClick={() => navigate("/dashboard/user-form")}
             className="bg-[#FEAF00] h-10 sm:h-full w-1/2  sm:w-[199px] rounded-xl text-white text-sm sm:text-base cursor-pointer"
           >
             ADD NEW STUDENT
