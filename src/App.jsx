@@ -1,6 +1,10 @@
 // src/App.js
 import React from "react";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import AuthLayout from "./shared/authLayout/AuthLayout";
 import NotFound from "./shared/notFound/NotFound";
@@ -48,7 +52,6 @@ function App() {
   return (
     <StudentsProvider>
       <RouterProvider router={routes} />
-      {/* ToastContainer عام يظهر في كل الصفحات */}
       <ToastContainer position="top-right" autoClose={2000} />
     </StudentsProvider>
   );
