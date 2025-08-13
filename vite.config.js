@@ -8,9 +8,7 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-<<<<<<< HEAD
-});
-=======
+
   build: {
 
     chunkSizeWarningLimit: 1500,
@@ -40,4 +38,3 @@ export default defineConfig({
     exclude: ['@rollup/rollup-linux-x64-gnu']
   }
 });
->>>>>>> 1f8a00aa15f543f12de7e413648dccd793c67587
