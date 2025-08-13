@@ -31,9 +31,29 @@ export function StudentsProvider({ children }) {
     setStudents((prev) => prev.filter((student) => student.id !== id));
     toast.success("Student deleted successfully!");
   };
-
+  const editStudent = (id, data) => {
+    setStudents((prev) =>
+      prev.map((student) =>
+        student.id === id
+          ? {
+              ...student,
+              img: data?.file?.[0]
+                ? URL.createObjectURL(data.file[0])
+                : student.img,
+              name: data?.name,
+              email: data?.email,
+              phone: data?.phone,
+              date: data?.date?.toLocaleDateString("en-GB"),
+            }
+          : student
+      )
+    );
+    toast.success("Student updated successfully!");
+  };
   return (
-    <StudentsContext.Provider value={{ students, addStudent, deleteStudent }}>
+    <StudentsContext.Provider
+      value={{ students, addStudent, deleteStudent, editStudent }}
+    >
       {children}
     </StudentsContext.Provider>
   );

@@ -3,9 +3,8 @@ import { GoPencil } from "react-icons/go";
 import { MdOutlineDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-
-export default function StudentsList({ handleAddStudent }) {
-    const navigate = useNavigate();
+export default function StudentsList() {
+  const navigate = useNavigate();
 
   const { students, deleteStudent } = useStudents();
   return (
@@ -14,7 +13,7 @@ export default function StudentsList({ handleAddStudent }) {
         <div className="flex flex-col sm:flex-row h-auto sm:h-15 w-11/12 m-auto  sm:items-center justify-between pt-2">
           <h1 className="sm:text-[22px] font-[700] mb-3">Students List</h1>
           <button
-           onClick={() => navigate("/dashboard/user-form")}
+            onClick={() => navigate("/dashboard/user-form")}
             className="bg-[#FEAF00] h-10 sm:h-full w-1/2  sm:w-[199px] rounded-xl text-white text-sm sm:text-base cursor-pointer"
           >
             ADD NEW STUDENT
@@ -57,9 +56,18 @@ export default function StudentsList({ handleAddStudent }) {
                   <td className="rounded-r-2xl">
                     <div className="flex justify-center text-[20px] text-[#FEAF00]">
                       <button className="mr-5 cursor-pointer">
-                        <GoPencil />
+                        <GoPencil
+                          onClick={() =>
+                            navigate(`/dashboard/user-form`, {
+                              state: { student },
+                            })
+                          }
+                        />
                       </button>
-                      <button className="cursor-pointer" onClick={() => deleteStudent(student.id)}>
+                      <button
+                        className="cursor-pointer"
+                        onClick={() => deleteStudent(student.id)}
+                      >
                         <MdOutlineDelete />
                       </button>
                     </div>
@@ -101,7 +109,10 @@ export default function StudentsList({ handleAddStudent }) {
                 <button className="mr-4 cursor-pointer">
                   <GoPencil />
                 </button>
-                <button className="cursor-pointer" onClick={() => deleteStudent(student.id)}>
+                <button
+                  className="cursor-pointer"
+                  onClick={() => deleteStudent(student.id)}
+                >
                   <MdOutlineDelete />
                 </button>
               </div>

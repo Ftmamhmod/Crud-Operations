@@ -1,27 +1,39 @@
-
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useStudents } from "../../context/StudentsContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function AddStudentForm() {
-  const { register, handleSubmit, control, reset } = useForm();
-  const { addStudent } = useStudents();
+  const location = useLocation();
+  const student = location.state?.student || {};
+  const { register, handleSubmit, control, reset } = useForm({
+    defaultValues: {
+      name: student.name || "",
+      email: student.email || "",
+      phone: student.phone || "",
+      date: null,
+      file: null,
+    },
+  });
+  const { addStudent, editStudent } = useStudents();
 
   const onSubmit = (data) => {
-    addStudent(data);
+    if (student) {
+      editStudent(student.id, data);
+    } else {
+      addStudent(data);
+    }
     reset();
   };
   const navigate = useNavigate();
 
-
   return (
     <div className="h-auto m-auto pt-2 p-5  mt-5 font-bold">
-      <h2 className="text-[22px] font-bold mb-6">Add  Student</h2>
+      <h2 className="text-[22px] font-bold mb-6">Add Student</h2>
 
       <div className="w-8/12 m-auto bg-gray-100 p-6 rounded-lg shadow">
-    <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
             <label className="block mb-2 text-sm font-medium">Name</label>
             <input
@@ -59,7 +71,9 @@ export default function AddStudentForm() {
           </div>
 
           <div className="mb-3">
-            <label className="block mb-2 text-sm font-medium">Date of admission</label>
+            <label className="block mb-2 text-sm font-medium">
+              Date of admission
+            </label>
             <Controller
               name="date"
               control={control}
@@ -92,7 +106,7 @@ export default function AddStudentForm() {
             onClick={() => navigate("/dashboard/Students")}
             className="bg-yellow-300 hover:bg-yellow-500 text-black font-medium py-6 px-1 rounded-lg w-full"
           >
-          Insert
+            Insert
           </button>
         </form>
       </div>
