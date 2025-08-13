@@ -6,7 +6,7 @@ export function StudentsProvider({ children }) {
   const [students, setStudents] = useState(() => {
     const saved = localStorage.getItem("students");
     return saved ? JSON.parse(saved) : [];
-  });
+  }); 
 
   useEffect(() => {
     localStorage.setItem("students", JSON.stringify(students));
