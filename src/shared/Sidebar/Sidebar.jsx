@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { userImg } from "../../assets/index.js";
 import { useState } from "react";
 import StudentsList from "../../pages/Students/Students.jsx";
+import { toast } from "react-toastify";
 
 export const SideBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -17,6 +18,7 @@ export const SideBar = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (isLoggedIn) {
       localStorage.removeItem("isLoggedIn");
+      toast.success("Logout successful");
     }
   };
   return (
