@@ -8,4 +8,30 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  build: {
+
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      onwarn(warning, warn) {
+
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return
+        warn(warning)
+      },
+      output: {
+        manualChunks: {
+
+          react: ['react', 'react-dom'],
+          tailwind: ['tailwindcss'],
+        }
+      }
+    }
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'tailwindcss'
+    ],
+    exclude: ['@rollup/rollup-linux-x64-gnu']
+  }
 });
