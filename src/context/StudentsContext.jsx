@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const StudentsContext = createContext();
 
@@ -6,7 +7,7 @@ export function StudentsProvider({ children }) {
   const [students, setStudents] = useState(() => {
     const saved = localStorage.getItem("students");
     return saved ? JSON.parse(saved) : [];
-  }); 
+  });
 
   useEffect(() => {
     localStorage.setItem("students", JSON.stringify(students));
@@ -23,10 +24,12 @@ export function StudentsProvider({ children }) {
       date: data.date?.toLocaleDateString("en-GB"),
     };
     setStudents((prev) => [...prev, newStudent]);
+    toast.success("Student added successfully!");
   };
 
   const deleteStudent = (id) => {
     setStudents((prev) => prev.filter((student) => student.id !== id));
+    toast.success("Student deleted successfully!");
   };
 
   return (
@@ -39,5 +42,3 @@ export function StudentsProvider({ children }) {
 export function useStudents() {
   return useContext(StudentsContext);
 }
-
-
