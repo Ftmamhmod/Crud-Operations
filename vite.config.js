@@ -11,6 +11,8 @@ export default defineConfig({
   build: {
 
     chunkSizeWarningLimit: 1500,
+    reportCompressedSize: false,
+    emptyOutDir: true,
     rollupOptions: {
       onwarn(warning, warn) {
 
